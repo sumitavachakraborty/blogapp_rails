@@ -1,25 +1,7 @@
 <h1>Edit the article</h1>
 
-<% if @article.errors.any? %>
-  <h2>Errors due to which article was not created</h2>
-  <ul>
-  <% @article.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-  <% end %>
-  </ul>
-<% end %>
+<%= render 'form' %>
 
-
-<%= form_with(model: @article, local: true) do |f| %>
-  <p>
-    <%= f.label :name %><br/>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br/>
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.submit%>  
-  </p>
-<% end %>
+<p>
+    <%= link_to 'Articles listing', articles_path %>
+</p>

@@ -1,23 +1,30 @@
-<% if @article.errors.any? %>
-  <h2>Errors due to which article was not created</h2>
-  <ul>
-  <% @article.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-  <% end %>
-  </ul>
-<% end %>
+  
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10" >
+      <%= render 'shared/errors'%>
+      <%= form_with(model: @article, class: "shadow p-3 mb-5 bg-white rounded" ,local: true) do |f| %>
 
+        <div class="form-group row mb-3">
+          <%= f.label :name, class: "col-2 col-form-label" %>
+          <div class ="col-10">
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+        </div>
 
-<%= form_with(model: @article, local: true) do |f| %>
-  <p>
-    <%= f.label :name %><br/>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br/>
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.submit%>  
-  </p>
-<% end %>
+        <div class="form-group row mb-3">
+          <%= f.label :description, class: "col-2 col-form-label" %>
+          <div class ="col-10">
+            <%= f.text_area :description, rows: 10 ,class: "form-control"%>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <%= f.submit class: "btn btn-outline-success btn-lg"%>  
+        </div>
+      <% end %>
+    </div>
+
+    <%= link_to '[ Back to articles listing ]', articles_path, class: "text-center" %>
+  </div>
+</div>

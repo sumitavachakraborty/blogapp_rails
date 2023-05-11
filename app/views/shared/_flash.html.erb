@@ -1,0 +1,15 @@
+<div class="container text-center">
+    <% flash.each do |name, msg| %>
+    <div class="alert alert-<%= name %>" id="flash">
+        <%= msg %>
+    </div>
+    <% end %>
+</div>
+
+<script>
+$(document).ready(function(){
+    setTimeout(function(){
+      $('#flash').fadeOut();
+    }, 2000);
+   })
+</script>

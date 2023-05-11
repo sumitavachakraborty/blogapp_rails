@@ -1,0 +1,7 @@
+{
+  "name": "app",
+  "private": "true",
+  "devDependencies": {
+    "webpack-cli": "^5.1.0"
+  }
+}

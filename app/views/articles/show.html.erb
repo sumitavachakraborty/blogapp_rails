@@ -1,9 +1,21 @@
-<h1>Showing article </h1>
-<%= render 'shared/flash' %> 
-<p>Name of article     :<strong> <%= @article.name %></strong></p>
-<p>Article description :<strong> <%= @article.description %></strong></p>
-
-<%= link_to 'Edit', edit_article_path(@article) %>
-<%= link_to 'Delete', article_path(@article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-
-<%= link_to '[ Back to articles listing ]', articles_path %>
+<div class="container text-center mb-3">
+    <h2 class="text-center mt-4"><%= @article.name %></h2>
+    <%= render 'shared/flash' %>
+     <div class="container">
+         <div class="row justify-content-center">
+             <div class="col-8 mt-4">
+                 <div class="card text-center shadow p-3 mb-5 bg-white rounded">
+                    <div class="card-header fst-italic">Featured</div>
+                    <div class="card-body">
+                        <div class="card-text text-start"><%= simple_format(@article.description)%></div>
+                        <a href="#"><%= link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-success"%></a>
+                        <a href="#"><%= link_to 'Delete', article_path(@article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-outline-danger"%></a>
+                    </div>
+                    <div class="card-footer text-body-secondary">
+                        <small>Created <%= time_ago_in_words(@article.created_at) %> ago, edited at <%= time_ago_in_words(@article.updated_at) %> ago</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

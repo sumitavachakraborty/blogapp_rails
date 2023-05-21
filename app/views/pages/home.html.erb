@@ -1,4 +1,10 @@
-<div class="container text-center">
-    <h1 class="text-center mt-4">Welcome to the blog APP</h1>
-    <button type="button" class="btn btn-success">Sign in</button>
+<div class="container text-center" id="home-container">
+    <%= render 'shared/flash' %>
+    <div class="jumbotron mx-auto p-2 shadow p-3 mb-5 rounded">
+        <h1 class="display-4">Welcome to the blog APP</h1>
+        <p class="lead mt-4">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information. make new content by signing up or by logging in</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <%= link_to "Sign up!" , signup_path , class: "btn btn-success btn-lg" %>
+    </div>
 </div>

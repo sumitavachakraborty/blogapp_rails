@@ -1,5 +1,10 @@
+<h1 class="text-center mt-4"><%= @user.username %>'s Profile</h1>
 <div class="container text-center mb-3">
-    <h1 class="text-center mt-4">Articles listing</h1>
+    <% if logged_in? && @user == current_user %>
+    <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-outline-success"%>
+    <%= link_to 'Delete Profile', user_path(current_user), class: "btn btn-outline-danger" , data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }%>
+    <% end %>
+    <h1 class="text-center mt-2">Articles listing</h1>
         <%= render 'shared/flash' %>
             <% @article.each do |article| %>
                 <div class="container">
@@ -13,9 +18,9 @@
                                     <h5 class="card-title"><%= article.name %></h5>
                                     <p class="card-text"><%= article.description %></p>
                                     <a href="#"><%= link_to 'Show', article_path(article), class: "btn btn-outline-info"%></a>
-                                    <% if logged_in? && (article.user == current_user || current_user.admin?) %>
-                                        <a href="#"><%= link_to 'Edit', edit_article_path(article), class: "btn btn-outline-success"%></a>
+                                    <% if logged_in? && (@user == current_user || current_user.admin?) %>
                                         <a href="#"><%= link_to 'Delete', article_path(article), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-outline-danger"%></a>
+                                        <a href="#"><%= link_to 'Edit', edit_article_path(article), class: "btn btn-outline-success"%></a>
                                     <% end %>
                                 </div>
                                 <div class="card-footer text-body-secondary">

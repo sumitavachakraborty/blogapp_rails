@@ -11,7 +11,7 @@
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text"><%= pluralize(user.articles.count, "articles") %></p>
-                                    <% if logged_in? && user == current_user || current_user.admin? %>
+                                    <% if logged_in? && (user == current_user || current_user.admin?) %>
                                         <a href="#"><%= link_to 'Edit Profile', edit_user_path(user), class: "btn btn-outline-success"%></a>
                                         <a href="#"><%= link_to 'Delete Profile', user_path(current_user), class: "btn btn-outline-danger" , data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }%></a>
                                     <% end %>
